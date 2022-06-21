@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Link from "next/link";
 
-export default function loginMitra() {
+export default function LoginMitra() {
   const [dataLogin, setDataLogin] = useState({
     mail: "",
     password: "",
