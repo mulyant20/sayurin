@@ -3,9 +3,4 @@ module.exports = {
     tailwindcss: {},
     autoprefixer: {},
   },
-  i18n: {
-    locales: ['id-ID'],
-    defaultLocale: 'id-ID',
-    localeDetection: true,
-  },
 }
