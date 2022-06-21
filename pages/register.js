@@ -22,10 +22,10 @@ export default function Register() {
   };
   return (
     <div className="h-screen w-screen flex justify-betwee">
+      <div className="w-1/2 h-full bg-gray-100 hidden md:block"></div>
       <div className="h-full bg-white w-screen md:w-1/2 flex justify-center items-center">
-        <div className="w-1/2 h-full bg-gray-100 hidden md:block"></div>
         <div className="w-80 h-fit text-center">
-          <h1 className="mb-6 text-2xl text-gray-800">Masuk sebagai mitra</h1>
+          <h1 className="mb-6 text-2xl text-gray-800">Daftar akun</h1>
           <form onSubmit={handleSubmit}>
             <div className="flex flex-col gap-2">
               <input
