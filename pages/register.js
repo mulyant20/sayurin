@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { createCustomer } from "../services/firebase";
 import { useUserAuth } from "../context/UserAuthContextProvider";
 
 export default function Register() {
@@ -9,19 +10,23 @@ export default function Register() {
   const [dataLogin, setDataLogin] = useState({
     mail: "",
     password: "",
+    displayName: "",
   });
 
-  const { signUp, googleSignIn } = useUserAuth();
+  const { signUp } = useUserAuth();
 
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
-      await signUp(dataLogin.mail, dataLogin.password);
+      const {user} = await signUp(dataLogin.mail, dataLogin.password)
+      await createCustomer(user, dataLogin.displayName, "customer");
+
       setDataLogin({
         mail: "",
         password: "",
+        displayName: "",
       });
-      router.push("/");
+      //   router.push("/");
     } catch (err) {
       console.log(err);
     }
@@ -44,6 +49,14 @@ export default function Register() {
           <h1 className="mb-6 text-2xl text-gray-800">Daftar akun</h1>
           <form onSubmit={handleSignup}>
             <div className="flex flex-col gap-2">
+              <input
+                type="text"
+                placeholder="name"
+                value={dataLogin.displayName}
+                onChange={handleChange}
+                name="displayName"
+                className="border border-gray-200 rounded px-4 py-3 outline-none"
+              />
               <input
                 type="text"
                 placeholder="Email"
