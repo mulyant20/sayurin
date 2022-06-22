@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { createCustomer } from "../services/firebase";
+import { auth, createCustomer } from "../services/firebase";
 import { useUserAuth } from "../context/UserAuthContextProvider";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 export default function Register() {
   const router = useRouter();
@@ -18,7 +19,7 @@ export default function Register() {
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
-      const {user} = await signUp(dataLogin.mail, dataLogin.password)
+      const { user } = await signUp(dataLogin.mail, dataLogin.password);
       await createCustomer(user, dataLogin.displayName, "customer");
 
       setDataLogin({
@@ -26,10 +27,22 @@ export default function Register() {
         password: "",
         displayName: "",
       });
-      //   router.push("/");
+      router.push("/");
     } catch (err) {
       console.log(err);
     }
+  };
+
+  const signInGoogle = () => {
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider)
+      .then((res) => {
+        createCustomer(res.user, res.user.displayName, "customer");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    router.push("/");
   };
 
   const handleChange = (e) => {
@@ -81,7 +94,10 @@ export default function Register() {
               </button>
             </div>
           </form>
-          <button className="w-full mt-4 py-2 text-white bg-blue-500 rounded shadow font-semibold">
+          <button
+            className="w-full mt-4 py-2 text-white bg-blue-500 rounded shadow font-semibold"
+            onClick={signInGoogle}
+          >
             Google
           </button>
           <p className="mt-2 text-gray-400">
