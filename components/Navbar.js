@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { useUserAuth } from "../context/UserAuthContextProvider";
-import Logout from "./Logout";
 import SearchField from "./SearchField";
 
 export default function Navbar() {
@@ -57,7 +56,7 @@ export default function Navbar() {
         <div className="w-8 h-8 rounded-full bg-white/40 relative">
           <Link href={"/"}>
             <div className="w-full h-full flex items-center justify-center">
-              <Image src="/icons/cart.svg" width="20" height="20" />
+              <Image src="/icons/cart.svg" width="20" height="20" alt="cart"/>
             </div>
           </Link>
           <div className="w-[10px] h-[10px] rounded-full bg-red-400 absolute top-0 right-[-2px] border border-primary"></div>
