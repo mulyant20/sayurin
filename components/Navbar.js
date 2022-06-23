@@ -13,7 +13,16 @@ export default function Navbar() {
   };
 
   return (
-    <div className="w-screen h-fit px-6 lg:px-32 py-4 flex items-center justify-between bg-primary gap-2 duration-200">
+    <div className="w-screen">
+    <div  className="w-full h-12 lg:h-[36px] px-6 lg:px-32 flex items-center justify-center lg:justify-end gap-2 bg-primary text-white text-sm">
+      <Link href={'/registerMitra'}>
+        <span className="cursor-pointer px-2 py-1 hover:bg-white/20 rounded">Daftar Mitra</span>
+      </Link>
+      <Link href={'/loginMitra'}>
+        <span className="cursor-pointer px-2 py-1 hover:bg-white/20 rounded">Login Mitra</span>
+      </Link>
+    </div>
+    <div className="w-full h-fit px-6 lg:px-32 py-4 flex items-center justify-between bg-primary gap-2 duration-200">
       {/* logo */}
       <div className="w-fit h-fit flex gap-2 items-center">
         <svg
@@ -45,7 +54,7 @@ export default function Navbar() {
             fill="#fff"
           ></path>
         </svg>
-        <h1 className="text-white text-[18px] font-bold">
+        <h1 className="text-white text-[18px] font-bold hidden md:block">
           Sayur<span className="text-white/90">In</span>
         </h1>
       </div>
@@ -90,6 +99,7 @@ export default function Navbar() {
           </>
         )}
       </div>
+    </div>
     </div>
   );
 }
