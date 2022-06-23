@@ -1,7 +1,14 @@
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { useUserAuth } from "../context/UserAuthContextProvider";
+import { auth } from "../services/firebase";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import Link from "next/link";
 
 export default function LoginMitra() {
+  const { logIn } = useUserAuth();
+  const router = useRouter();
+
   const [dataLogin, setDataLogin] = useState({
     mail: "",
     password: "",
@@ -9,17 +16,34 @@ export default function LoginMitra() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-
     setDataLogin((prev) => ({
       ...prev,
       [name]: value,
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(dataLogin);
+    try {
+      await logIn(dataLogin.mail, dataLogin.password);
+      setDataLogin({
+        mail: "",
+        password: "",
+      });
+      router.push("/");
+    } catch (err) {}
   };
+
+  const signInGoogle = () => {
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider)
+      .then((res) => {
+        createCustomer(res.user, res.user.displayName, "customer");
+      })
+      .catch((err) => {});
+    router.push("/");
+  };
+
   return (
     <div className="h-screen w-screen flex justify-betwee">
       <div className="h-full bg-white w-screen md:w-1/2 flex justify-center items-center">
@@ -51,7 +75,10 @@ export default function LoginMitra() {
               </button>
             </div>
           </form>
-          <button className="w-full mt-4 py-2 text-white bg-blue-500 rounded shadow font-semibold">
+          <button
+            className="w-full mt-4 py-2 text-white bg-blue-500 rounded shadow font-semibold"
+            onClick={signInGoogle}  
+          >
             Google
           </button>
           <p className="mt-2 text-gray-400">
