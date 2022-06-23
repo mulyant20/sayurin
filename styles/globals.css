@@ -5,3 +5,22 @@
 body {
     background-color: #f5f5f5;
 }
+
+.border-red {
+    border: 1px solid red;
+}
+
+.menu-profile {
+    animation-name: showMenuProfile;
+    animation-duration: 0.2s;
+}
+
+@keyframes showMenuProfile {
+    from {
+        transform: translateY(80%);
+        right: 0;
+    }
+    to {
+        transform: translateY(0%);
+    }
+}
