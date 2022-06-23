@@ -30,10 +30,9 @@ export function UserAuthContextProvider({ children }) {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentuser) => {
-      console.log("siapa Auth", currentuser);
+      console.log(currentuser)
       setUser(currentuser);
     });
-
     return () => {
       unsubscribe();
     };
