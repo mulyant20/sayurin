@@ -44,16 +44,17 @@ export default function Register() {
     }
   };
 
-  const signInGoogle = () => {
-    const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider)
-      .then((res) => {
-        createUser(res.user, res.user.displayName, "customer");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    router.push("/");
+  const signInGoogle = async () => {
+    try {
+      await googleSignIn()
+        .then((res) => {
+          createCustomer(res.user, res.user.displayName, "customer");
+        })
+        .catch((err) => {});
+      router.push("/");
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   return (

@@ -1,17 +1,13 @@
 import { useUserAuth } from "../context/UserAuthContextProvider";
-import { auth, createUser } from "../services/firebase";
+import { createUser } from "../services/firebase";
+import { updateProfile } from "firebase/auth";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import Link from "next/link";
-import {
-  GoogleAuthProvider,
-  signInWithPopup,
-  updateProfile,
-} from "firebase/auth";
 
 export default function RegisterMitra() {
   const router = useRouter();
-  const { signUp } = useUserAuth();
+  const { signUp, googleSignIn } = useUserAuth();
 
   const [dataLogin, setDataLogin] = useState({
     username: "",
@@ -44,16 +40,17 @@ export default function RegisterMitra() {
     }
   };
 
-  const signInGoogle = () => {
-    const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider)
-      .then((res) => {
-        createUser(res.user, res.user.displayName, "mitra");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    router.push("/");
+  const signInGoogle = async () => {
+    try {
+      await googleSignIn()
+        .then((res) => {
+          createCustomer(res.user, res.user.displayName, "customer");
+        })
+        .catch((err) => {});
+      router.push("/");
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   return (
