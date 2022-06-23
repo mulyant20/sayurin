@@ -1,31 +1,42 @@
-import Link from "next/link";
+import { useUserAuth } from "../context/UserAuthContextProvider";
+import { auth, createUser } from "../services/firebase";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { auth, createCustomer } from "../services/firebase";
-import { useUserAuth } from "../context/UserAuthContextProvider";
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import Link from "next/link";
+import {
+  GoogleAuthProvider,
+  signInWithPopup,
+  updateProfile,
+} from "firebase/auth";
 
 export default function Register() {
   const router = useRouter();
+  const { signUp } = useUserAuth();
 
   const [dataLogin, setDataLogin] = useState({
+    username: "",
     mail: "",
     password: "",
-    displayName: "",
   });
 
-  const { signUp } = useUserAuth();
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setDataLogin((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
 
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
       const { user } = await signUp(dataLogin.mail, dataLogin.password);
-      await createCustomer(user, dataLogin.displayName, "customer");
-
+      await createUser(user, dataLogin.username, "customer");
+      await updateProfile(user, { displayName: dataLogin.username });
       setDataLogin({
         mail: "",
         password: "",
-        displayName: "",
+        username: "",
       });
       router.push("/");
     } catch (err) {
@@ -37,21 +48,12 @@ export default function Register() {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
       .then((res) => {
-        createCustomer(res.user, res.user.displayName, "customer");
+        createUser(res.user, res.user.displayName, "customer");
       })
       .catch((err) => {
         console.log(err);
       });
     router.push("/");
-  };
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-
-    setDataLogin((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
   };
 
   return (
@@ -65,9 +67,9 @@ export default function Register() {
               <input
                 type="text"
                 placeholder="name"
-                value={dataLogin.displayName}
+                value={dataLogin.username}
                 onChange={handleChange}
-                name="displayName"
+                name="username"
                 className="border border-gray-200 rounded px-4 py-3 outline-none"
               />
               <input
