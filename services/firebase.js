@@ -17,14 +17,14 @@ export default app;
 
 export const db = getFirestore(app);
 
-export const createCustomer = async (user, name, roles) => {
+export const createUser = async (user, name, roles) => {
   if (!user) return;
   const { email, uid } = user;
 
-  const customerRef = collection(db, "konsumen");
+  const userRef = collection(db, "users");
 
   try {
-    await addDoc(customerRef, { uid, email: email, name: name, roles: roles });
+    await addDoc(userRef, { uid, email: email, name: name, roles: roles });
   } catch (err) {
     console.log("err", err);
   }
