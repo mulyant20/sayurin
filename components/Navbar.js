@@ -13,16 +13,7 @@ export default function Navbar() {
   };
 
   return (
-    <div className="w-screen">
-    <div  className="w-full h-12 lg:h-[36px] px-6 lg:px-32 flex items-center justify-center lg:justify-end gap-2 bg-primary text-white text-sm">
-      <Link href={'/registerMitra'}>
-        <span className="cursor-pointer px-2 py-1 hover:bg-white/20 rounded">Daftar Mitra</span>
-      </Link>
-      <Link href={'/loginMitra'}>
-        <span className="cursor-pointer px-2 py-1 hover:bg-white/20 rounded">Login Mitra</span>
-      </Link>
-    </div>
-    <div className="w-full h-fit px-6 lg:px-32 py-4 flex items-center justify-between bg-primary gap-2 duration-200">
+    <div className="w-screen w-screen h-fit px-6 lg:px-32 py-4 flex items-center justify-between bg-primary gap-2 duration-200">
       {/* logo */}
       <div className="w-fit h-fit flex gap-2 items-center">
         <svg
@@ -65,7 +56,7 @@ export default function Navbar() {
         <div className="w-8 h-8 rounded-full bg-white/40 relative">
           <Link href={"/"}>
             <div className="w-full h-full flex items-center justify-center">
-              <Image src="/icons/cart.svg" width="20" height="20" alt="cart"/>
+              <Image src="/icons/cart.svg" width="20" height="20" alt="cart" />
             </div>
           </Link>
           <div className="w-[10px] h-[10px] rounded-full bg-red-400 absolute top-0 right-[-2px] border border-primary"></div>
@@ -79,7 +70,12 @@ export default function Navbar() {
               ></button>
               {isOpen && (
                 <div className="absolute -bottom-[48px] right-0 h-[40px] w-20 bg-white menu-profile shadow">
-                    <button onClick={logOut} className="w-full text-center py-2 text-red-500">Logout</button>
+                  <button
+                    onClick={logOut}
+                    className="w-full text-center py-2 text-red-500"
+                  >
+                    Logout
+                  </button>
                 </div>
               )}
             </div>
@@ -99,7 +95,6 @@ export default function Navbar() {
           </>
         )}
       </div>
-    </div>
     </div>
   );
 }
