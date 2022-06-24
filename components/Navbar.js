@@ -63,8 +63,8 @@ export default function Navbar() {
 
       <div className="w-fit flex justify-end gap-2">
         <div className="w-8 h-8 rounded-full bg-white/40 relative">
-          <Link href={"/"}>
-            <div className="w-full h-full flex items-center justify-center">
+          <Link href={"/keranjang"}>
+            <div className="w-full h-full flex items-center justify-center cursor-pointer">
               <Image src="/icons/cart.svg" width="20" height="20" alt="cart" />
             </div>
           </Link>
