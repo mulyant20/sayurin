@@ -1,8 +1,8 @@
+import { useUserAuth } from "../context/UserAuthContextProvider";
+import { useEffect, useState } from "react";
+import SearchField from "./SearchField";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import { useUserAuth } from "../context/UserAuthContextProvider";
-import SearchField from "./SearchField";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,7 +23,7 @@ export default function Navbar() {
   };
 
   return (
-    <div className="w-screen w-screen h-fit px-6 lg:px-32 py-4 flex items-center justify-between bg-primary gap-2 duration-200">
+    <div className="w-screen h-fit px-6 lg:px-32 py-4 flex items-center justify-between bg-primary gap-2 duration-200">
       <div className="w-fit h-fit flex gap-2 items-center">
         <svg
           id="logo-15"
