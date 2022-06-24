@@ -14,9 +14,16 @@ export default function Home() {
         <link rel="icon" href="/logo.svg" />
       </Head>
       <Navbar />
-      <div className='mt-6 max-w-[1100px] h-40 mx-auto px-6 lg:px-0 flex flex-wrap justify-between gap-4 gap-y-4'>
+      <div className='mt-6 max-w-[1100px] h-40 mx-auto px-6 lg:px-0 flex flex-wrap justify-between gap-2 lg:gap-4'>
         {product.map(item => {
-          return <CardProduct key={item.id} nama={item.nama} harga={item.harga} satuan={item.satuan} jumbeli={item.jumBeli} />
+          return  <CardProduct 
+                    key={item.id} 
+                    nama={item.nama} 
+                    harga={item.harga} 
+                    satuan={item.satuan} 
+                    jumbeli={item.jumBeli} 
+                    diskon={item.diskon}
+                  />
         })}
       </div>
     </div>
