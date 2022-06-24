@@ -11,7 +11,13 @@ body {
 }
 
 .card-product {
-    flex: 1 0 46%
+    flex-basis: 204px;
+}
+
+@media (max-width:  800px) {
+    .card-product {
+        flex: 0 0 48%;
+    }
 }
 
 .menu-profile {
