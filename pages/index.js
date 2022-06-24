@@ -7,7 +7,6 @@ import { useProductContext } from "../context/ProductContextProvider";
 export default function Home() {
   const { product } = useProductContext();
   const [cart, setCart] = useState([]);
-  let Tempdata = []
 
   const addToCart = (selectedItem) => {
     let array = [...cart];
@@ -30,7 +29,7 @@ export default function Home() {
  useEffect(() => {
   checkStorage('cart')
 
- }, [checkStorage])
+ }, [])
 
 
   return (
