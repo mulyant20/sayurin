@@ -10,7 +10,7 @@ export default function CardProduct({nama, harga, satuan, jumbeli}) {
         isActive ? setIsActive(false) : setIsActive(true)
     }
     return(
-        <div className="min-w-[153px]  lg:w-[160px] min-h-[200px] bg-white/80 hover:bg-white hover:shadow-sm border border-transparent hover:border-primary rounded-[8px] relative p-2 duration-[150ms] ease-in">
+        <div className="lg:w-[20%] w-[160px] min-h-[200px] bg-white/80 hover:bg-white hover:shadow-sm border border-transparent hover:border-primary rounded-[8px] relative p-2 duration-[150ms] ease-in">
             <div className="w-full h-24 rounded-[5px] border border-gray-200 overflow-hidden relative">
                 <Image src='/img/productPlaceholder.png' width='150' height='150' layout="fill"/>
                 <button className="absolute right-0 w-10 h-10 flex items-center justify-center" onClick={handleActive}>
