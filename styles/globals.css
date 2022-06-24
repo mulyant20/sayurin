@@ -44,3 +44,12 @@ body {
     top: 50%;
     transform: translate(-50%,-50%);
 }
+
+.btn {
+    box-shadow: 0px -3px 4px 0px #01AB79 inset
+}
+
+.btn:hover, 
+.btn:active {
+    box-shadow: 0px 3px 4px 0px #01AB79 inset
+}
