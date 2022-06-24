@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CardProduct from "../components/CardProduct";
 import Navbar from "../components/Navbar";
 import { useProductContext } from "../context/ProductContextProvider";
@@ -7,6 +7,7 @@ import { useProductContext } from "../context/ProductContextProvider";
 export default function Home() {
   const { product } = useProductContext();
   const [cart, setCart] = useState([]);
+  let Tempdata = []
 
   const addToCart = (selectedItem) => {
     let array = [...cart];
@@ -20,6 +21,17 @@ export default function Home() {
       console.log("Already added");
     }
   };
+
+  const checkStorage = (key) => {
+    const localcart = localStorage.getItem(key);
+    if (localcart) setCart(JSON.parse(localcart))
+ }
+
+ useEffect(() => {
+  checkStorage('cart')
+
+ }, [checkStorage])
+
 
   return (
     <div>

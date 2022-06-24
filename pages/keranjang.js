@@ -18,11 +18,7 @@ export default function Keranjang() {
     checkStorage("cart");
     if (localCart) setProductCart(localCart);
   }, []);
-
-  for(let i = 0; i < productCart.length; i++) {
-    console.log(productCart[i][0].nama)
-  }
-
+  
   return (
     <>
       <Head>
