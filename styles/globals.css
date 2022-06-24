@@ -10,6 +10,10 @@ body {
     border: 1px solid red;
 }
 
+.card-product {
+    flex: 1 0 46%
+}
+
 .menu-profile {
     animation-name: showMenuProfile;
     animation-duration: 0.2s;
