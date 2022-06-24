@@ -16,7 +16,7 @@ body {
 
 @media (max-width:  800px) {
     .card-product {
-        flex: 0 0 48%;
+        flex: 0 0 47%;
     }
 }
 
