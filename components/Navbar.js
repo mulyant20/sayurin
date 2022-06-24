@@ -1,20 +1,29 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useUserAuth } from "../context/UserAuthContextProvider";
 import SearchField from "./SearchField";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const { user, logOut } = useUserAuth();
+  const [hasCart, setHasCart] = useState(false)
 
+  const checkStorage = (key) => {
+    const localcart = localStorage.getItem(key);
+    if (localcart) setHasCart(true);
+ }
+
+ useEffect(() => {
+  checkStorage('cart')
+ }, [checkStorage])
+  
   const handleOpen = () => {
     isOpen ? setIsOpen(false) : setIsOpen(true);
   };
 
   return (
     <div className="w-screen w-screen h-fit px-6 lg:px-32 py-4 flex items-center justify-between bg-primary gap-2 duration-200">
-      {/* logo */}
       <div className="w-fit h-fit flex gap-2 items-center">
         <svg
           id="logo-15"
@@ -59,7 +68,7 @@ export default function Navbar() {
               <Image src="/icons/cart.svg" width="20" height="20" alt="cart" />
             </div>
           </Link>
-          <div className="w-[10px] h-[10px] rounded-full bg-red-400 absolute top-0 right-[-2px] border border-primary"></div>
+          {hasCart && <div className="w-[13px] h-[13px] rounded-full bg-[#FF4B4B] absolute -top-[2px] -right-[3px] border-[2px] border-primary"></div>}
         </div>
         {user ? (
           <>
