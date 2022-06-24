@@ -12,7 +12,8 @@ export default function Home() {
     let array = [...cart];
     
     if (!array.includes(selectedItem)) {
-      array.push(selectedItem);
+      const newData = product.filter((item => item.id === selectedItem))
+      array.push(newData);
       localStorage.setItem("cart", JSON.stringify(array));
       setCart(array);
     } else {
