@@ -23,8 +23,8 @@ export default function Navbar() {
   };
 
   return (
-    <div className="w-screen h-fit px-6 lg:px-32 py-4 flex items-center justify-between bg-primary gap-2 duration-200">
-      <div className="w-fit h-fit flex gap-2 items-center">
+    <div className="w-screen h-fit px-6 lg:px-32 py-4 flex items-center justify-between bg-primary gap-[16px] duration-200">
+      <div className="w-fit h-fit flex gap-2 items-center hidden md:block">
         <svg
           id="logo-15"
           width="36"
@@ -54,7 +54,7 @@ export default function Navbar() {
             fill="#fff"
           ></path>
         </svg>
-        <h1 className="text-white text-[18px] font-bold hidden md:block">
+        <h1 className="text-white text-[18px] font-bold">
           Sayur<span className="text-white/90">In</span>
         </h1>
       </div>
@@ -92,12 +92,12 @@ export default function Navbar() {
         ) : (
           <>
             <Link href={"/login"}>
-              <button className="px-2 py-1 rounded flex justify-center items-center bg-white/30 text-white text-sm">
+              <button className="px-2 py-1 rounded flex justify-center items-center bg-white/30 text-white text-sm hidden md:block">
                 Login
               </button>
             </Link>
             <Link href={"/register"}>
-              <button className="px-2 py-1 rounded flex justify-center items-center bg-white/30 text-white text-sm">
+              <button className="px-2 py-1 rounded flex justify-center items-center bg-white/30 text-white text-sm hidden md:block">
                 Register
               </button>
             </Link>
