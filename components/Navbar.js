@@ -24,11 +24,7 @@ export default function Navbar() {
 
   return (
     <div className="w-screen h-fit px-6 lg:px-32 py-4 flex items-center justify-between bg-primary gap-[16px] duration-200">
-<<<<<<< HEAD
-      <div className="w-fit h-fit flex gap-2 items-center hidden md:flex">
-=======
       <div className="w-fit h-fit flex gap-2 items-center hidden md:block">
->>>>>>> ec9763ad506298ba1e8f0d5c2cf25aa922bd8be3
         <svg
           id="logo-15"
           width="36"
