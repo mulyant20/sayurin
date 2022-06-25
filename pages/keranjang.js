@@ -7,8 +7,11 @@ import { useUserAuth } from "../context/UserAuthContextProvider";
 import NavbarDetail from "../components/NavbarDetail";
 import CartProduct from "../components/CartProduct";
 import Button from "../components/Button";
+import Toast from "../components/Toast";
 
 export default function Keranjang() {
+  const [isToast, setIsToast] = useState(false)
+  
   const [productCart, setProductCart] = useState([]);
   const router = useRouter();
   const { user } = useUserAuth();
@@ -28,15 +31,23 @@ export default function Keranjang() {
   const handleCheckout = () => {
 
     !user
-      ? alert('login dulu')
+      ? setIsToast(true)
       : router.push('checkout')
   }
 
   useEffect(() => {
     checkStorage("cart");
     if (localCart) setProductCart(localCart);
-    console.log(productCart)
   }, []);
+
+  useEffect(() => {
+    if (isToast) {
+      const startToast = setTimeout(() => {
+        setIsToast(false);
+        clearTimeout(startToast);
+      }, 1200);
+    }
+  }, [isToast]);
 
   return (
     <>
@@ -69,7 +80,7 @@ export default function Keranjang() {
                 />
               );
             })}
-            <div className="w-screen lg:w-full h-fit flex justify-end static sm:fixed">
+            <div className="w-full h-fit flex justify-end fixed bottom-6 right-6 lg:bottom-0 lg:right-0 lg:static">
               <Button text='Checkout' click={handleCheckout}/>
             </div>
           </>
@@ -79,6 +90,7 @@ export default function Keranjang() {
           </div>
         )}
       </div>
+      {isToast && <Toast text='Anda belum login' />}
     </>
   );
 }
