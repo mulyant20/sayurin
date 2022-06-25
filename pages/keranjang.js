@@ -1,9 +1,9 @@
 import NavbarDetail from "../components/NavbarDetail";
 import CartProduct from "../components/CartProduct";
 import { useEffect, useState } from "react";
+import Button from "../components/Button";
 import { useRouter } from "next/router";
 import Head from "next/head";
-import Button from "../components/Button";
 
 export default function Keranjang() {
   const [productCart, setProductCart] = useState([]);
@@ -56,7 +56,7 @@ export default function Keranjang() {
               );
             })}
             <div className="w-full h-fit flex justify-end">
-              <Button goto path='/hehe' text='Checkout' />
+              <Button goto path='/checkout' text='Checkout' />
             </div>
           </>
         ) : (
