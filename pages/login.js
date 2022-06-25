@@ -1,6 +1,4 @@
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useUserAuth } from "../context/UserAuthContextProvider";
-import { auth } from "../services/firebase";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import Link from "next/link";

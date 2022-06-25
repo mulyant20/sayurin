@@ -1,13 +1,13 @@
 import Button from "../components/Button";
 
-export default function ModalCheckout({ click }) {
+export default function ModalCheckout({ click, close }) {
   return (
     <div className="w-full lg:w-[500px] h-80 modal-checkout bottom-0 left-1/2 -translate-x-1/2 px-3 lg:px-0">
       <div className="bg-white w-full h-full rounded-t-[16px] shadow-lg flex flex-col p-6">
         <div>
           <button
             className="h-10 w-10 rounded-full bg-gray-100 hover:bg-red-200 active:bg-red-500 text-red-500 hover:text-red-800 active:text-white duration-[150ms] ease-in"
-            onClick={click}
+            onClick={close}
           >
             X
           </button>
@@ -30,7 +30,7 @@ export default function ModalCheckout({ click }) {
           </div>
         </div>
         <div className="flex justify-end mt-8">
-          <Button text="Bayar" />
+          <Button text="Bayar" click={click}/>
         </div>
       </div>
     </div>
