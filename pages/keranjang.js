@@ -1,14 +1,18 @@
-import NavbarDetail from "../components/NavbarDetail";
-import CartProduct from "../components/CartProduct";
 import { useEffect, useState } from "react";
-import Button from "../components/Button";
 import { useRouter } from "next/router";
 import Head from "next/head";
 
+import { useUserAuth } from "../context/UserAuthContextProvider";
+
+import NavbarDetail from "../components/NavbarDetail";
+import CartProduct from "../components/CartProduct";
+import Button from "../components/Button";
+
 export default function Keranjang() {
   const [productCart, setProductCart] = useState([]);
-  const localCart = [];
   const router = useRouter();
+  const { user } = useUserAuth();
+  const localCart = [];
 
   const checkStorage = (key) => {
     const local = localStorage.getItem(key);
@@ -19,6 +23,12 @@ export default function Keranjang() {
     localStorage.removeItem("cart");
     router.reload(window.location.pathname);
   };
+
+  const handleCheckout = () => {
+    !user
+      ? alert('login dulu')
+      : router.push('checkout')
+  }
 
   useEffect(() => {
     checkStorage("cart");
@@ -55,8 +65,8 @@ export default function Keranjang() {
                 />
               );
             })}
-            <div className="w-full h-fit flex justify-end">
-              <Button goto path='/checkout' text='Checkout' />
+            <div className="w-screen lg:w-full h-fit flex justify-end static sm:fixed">
+              <Button text='Checkout' click={handleCheckout}/>
             </div>
           </>
         ) : (
