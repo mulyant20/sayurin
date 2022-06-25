@@ -2,54 +2,83 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .radio {
+    @apply appearance-none w-[20px] h-[20px] border border-primary rounded-full relative;
+  }
+  .radio__inner {
+    @apply absolute w-[14px] h-[14px] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary hidden;
+  }
+  .radio:checked + .radio__inner {
+    @apply block;
+  }
+  .radio__label {
+    @apply text-gray-500 font-semibold;
+  }
+}
+
 body {
-    background-color: #f5f5f5;
+  background-color: #f5f5f5;
 }
 
 .border-red {
-    border: 1px solid red;
+  border: 1px solid red;
 }
 
 .card-product {
-    flex-basis: 204px;
+  flex-basis: 204px;
 }
 
-@media (max-width:  800px) {
-    .card-product {
-        flex: 0 0 47%;
-    }
+@media (max-width: 800px) {
+  .card-product {
+    flex: 0 0 47%;
+  }
 }
 
 .menu-profile {
-    animation-name: showMenuProfile;
-    animation-duration: 0.2s;
+  animation-name: showMenuProfile;
+  animation-duration: 0.2s;
 }
 
 @keyframes showMenuProfile {
-    from {
-        transform: translateY(80%);
-        right: 0;
-    }
-    to {
-        transform: translateY(0%);
-    }
+  from {
+    transform: translateY(80%);
+    right: 0;
+  }
+  to {
+    transform: translateY(0%);
+  }
 }
 
 .harga-normal::before {
-    content: '';
-    position: absolute;
-    width: calc(100% + 8px);
-    height: 1px;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%,-50%);
+  content: "";
+  position: absolute;
+  width: calc(100% + 8px);
+  height: 1px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .btn {
-    box-shadow: 0px -3px 4px 0px #01AB79 inset
+  box-shadow: 0px -3px 4px 0px #01ab79 inset;
 }
 
-.btn:hover, 
+.btn:hover {
+  box-shadow: 0px -1px 4px 0px #01ab79 inset;
+}
 .btn:active {
-    box-shadow: 0px 3px 4px 0px #01AB79 inset
+  box-shadow: 0px 4px 4px 0px #01ab79 inset;
+}
+
+.modal-checkout {
+  position: fixed;
+  animation-name: showModalCheckout;
+  animation-duration: 200ms;
+}
+
+@keyframes showModalCheckout {
+  from {
+    transform: translate(-50%,100%);
+  }
 }
