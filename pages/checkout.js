@@ -1,17 +1,24 @@
+import { useEffect, useState } from "react";
+import Head from "next/head";
+
+import { useUserAuth } from "../context/UserAuthContextProvider";
+
 import ModalCheckout from "../components/ModalCheckout";
 import CheckoutProduct from "../components/CheckoutProduct";
 import NavbarDetail from "../components/NavbarDetail";
-import { useEffect, useState } from "react";
 import Button from "../components/Button";
 import Radio from "../components/Radio";
-import Head from "next/head";
-
+import { Router, useRouter } from "next/router";
 
 export default function Checkout() {
+  const [isModalOpen, setIsModalOpen] = useState(false)
   const [productCart, setProductCart] = useState([]);
   const [metodeBayar, setMetodeBayar] = useState('')
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  
   const localCart = [];
+  
+  const {user} = useUserAuth()
+  const router = useRouter()
 
   const checkStorage = (key) => {
     const local = localStorage.getItem(key);
@@ -25,8 +32,14 @@ export default function Checkout() {
   const handleModal = () => setIsModalOpen(true)
 
   useEffect(() => {
-    checkStorage("cart");
-    if (localCart) setProductCart(localCart);
+    if(!user) {
+      router.push('/')
+    } else {
+      checkStorage("cart");
+      localCart 
+        ? setProductCart(localCart)
+        : router.push('/')
+    }
   }, []);
 
   return (
@@ -81,7 +94,7 @@ export default function Checkout() {
         {!isModalOpen && <div className="flex justify-end">
             <Button text='Konfirmasi pembayaran' click={handleModal} />
         </div>}
-        {isModalOpen && <ModalCheckout click={() => setIsModalOpen(false)}/>}
+        {isModalOpen && <ModalCheckout close={() => setIsModalOpen(false)}/>}
       </div>
     </>
   );
