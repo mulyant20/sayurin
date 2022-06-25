@@ -5,30 +5,58 @@ import Navbar from "../components/Navbar";
 import { useProductContext } from "../context/ProductContextProvider";
 
 export default function Home() {
-  const { product } = useProductContext();
   const [cart, setCart] = useState([]);
-
+  const [productLocal, setProductLocal] = useState([])
+  
+  const { product } = useProductContext();
+  
   const addToCart = (selectedItem) => {
-    let array = [...cart];
+    let idLocal = [...cart];
+    let fromLocal = [...productLocal]
+    let total = '';
     
-    if (!array.includes(selectedItem)) {
+    for(let i in product)  {
+      if(product[i].id === selectedItem) {
+        total = product[i].harga
+      }
+    }
+
+    if (!idLocal.includes(selectedItem)) {
+      const jum = {jumlah: 1}
+      const newId = selectedItem;
+      const subtotal = {subtotal: total}
       const newData = product.filter((item => item.id === selectedItem))
-      array.push(newData);
-      localStorage.setItem("cart", JSON.stringify(array));
-      setCart(array);
+      newData.push(jum)
+      newData.push(subtotal)
+
+      fromLocal.push(newData);
+      idLocal.push(newId)
+      
+      localStorage.setItem("cart", JSON.stringify(fromLocal));
+      localStorage.setItem("idAdded", JSON.stringify(idLocal))
+
+      setCart(idLocal);
+      setProductLocal(fromLocal);
+      subtotal = {subtotal: 0}
+      total = 0;
     } else {
       console.log("Already added");
     }
   };
 
-  const checkStorage = (key) => {
-    const localcart = localStorage.getItem(key);
-    if (localcart) setCart(JSON.parse(localcart))
+  const checkStorage = () => {
+    const productfromlocal = localStorage.getItem('cart');
+    const idfromlocal = localStorage.getItem('idAdded');
+
+    if (productfromlocal)
+      setProductLocal([...JSON.parse(productfromlocal)])
+
+    if (idfromlocal)
+      setCart([...JSON.parse(idfromlocal)])
  }
 
  useEffect(() => {
-  checkStorage('cart')
-
+  checkStorage()
  }, [])
 
 

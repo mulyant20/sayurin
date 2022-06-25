@@ -21,10 +21,12 @@ export default function Keranjang() {
 
   const deleteAllCart = () => {
     localStorage.removeItem("cart");
+    localStorage.removeItem("idAdded");
     router.reload(window.location.pathname);
   };
 
   const handleCheckout = () => {
+
     !user
       ? alert('login dulu')
       : router.push('checkout')
@@ -33,6 +35,7 @@ export default function Keranjang() {
   useEffect(() => {
     checkStorage("cart");
     if (localCart) setProductCart(localCart);
+    console.log(productCart)
   }, []);
 
   return (
@@ -47,7 +50,7 @@ export default function Keranjang() {
       </Head>
       <NavbarDetail path="/" title="Keranjang" />
       <div className="mt-6 max-w-[500px] h-fit mx-auto px-6 lg:px-0 flex flex-col justify-between gap-[24px] lg:gap-[32px]">
-        {productCart != '' ? (
+        {productCart != "" ? (
           <>
             <div className="flex justify-end">
               <button className="text-red-500 text-sm" onClick={deleteAllCart}>
@@ -62,6 +65,7 @@ export default function Keranjang() {
                   harga={productCart[i][0].harga}
                   satuan={productCart[i][0].satuan}
                   diskon={productCart[i][0].diskon}
+                  jum={productCart[i][1].jumlah}
                 />
               );
             })}
@@ -70,7 +74,9 @@ export default function Keranjang() {
             </div>
           </>
         ) : (
-          <div className="w-full h-40 flex items-center justify-center">tidak ada</div>
+          <div className="w-full h-40 flex items-center justify-center">
+            tidak ada
+          </div>
         )}
       </div>
     </>
