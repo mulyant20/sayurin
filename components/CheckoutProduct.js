@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export default function CheckoutProduct({ nama, harga, diskon, satuan, jumlah, subtotal }) {
+export default function CheckoutProduct({ nama, harga, diskon, satuan, jumlah, subtotal, img }) {
   let hargaDiskon = harga - (harga * diskon) / 100;
 
   return (
@@ -8,7 +8,7 @@ export default function CheckoutProduct({ nama, harga, diskon, satuan, jumlah, s
       <div className="flex gap-[10px] h-[75px]">
         <div className="w-[80px] h-[80px] rounded border border-gray-400 overflow-hidden relative">
           <Image
-            src="/img/productPlaceholder.png"
+            src={`/img/${img}.png`}
             layout="fill"
             priority="20"
           />
@@ -34,7 +34,7 @@ export default function CheckoutProduct({ nama, harga, diskon, satuan, jumlah, s
         <p className="text-[14px] text-gray-400">
           x<span className="text-gray-700 text-[16px]">{jumlah}</span>
         </p>
-        <p className="text-gray-700 text-[14px] font-semibold">Rp. {diskon? hargaDiskon  : harga}</p>
+        <p className="text-gray-700 text-[14px] font-semibold">Rp. {diskon? hargaDiskon  : subtotal}</p>
       </div>
     </div>
   );

@@ -70,7 +70,7 @@ export default function LoginMitra() {
               />
               <button
                 type="submit"
-                className="mt-4 py-2 text-white bg-green-500 rounded shadow font-semibold"
+                className="mt-4 py-2 text-white bg-primary rounded shadow font-semibold"
               >
                 Login
               </button>
