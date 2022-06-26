@@ -1,7 +1,7 @@
 import Image from "next/image";
 
-export default function CartProduct({ nama, harga, diskon, satuan, jum }) {
-  let hargaDiskon = harga - (harga * diskon) / 100;
+export default function CartProduct({ nama, harga, diskon, satuan, jum, subtotal }) {
+  let hargaDiskon = subtotal - (harga * diskon) / 100;
 
   return (
     <div className="flex justify-between">
@@ -32,7 +32,7 @@ export default function CartProduct({ nama, harga, diskon, satuan, jum }) {
       </div>
       <div className="flex flex-col items-end justify-center">
         <p className="text-[14px] text-gray-400">Subtotal</p>
-        <p className="text-gray-700 text-[14px] font-semibold">Rp. 40000</p>
+        <p className="text-gray-700 text-[14px] font-semibold">Rp. {diskon ? hargaDiskon : subtotal}</p>
         <p>Jumlah, {jum}</p>
       </div>
     </div>
