@@ -7,7 +7,7 @@ import Navbar from "../components/Navbar";
 
 import { useProductContext } from "../context/ProductContextProvider";
 
-export default function favorit() {
+export default function Favorit() {
   const [productLocal, setProductLocal] = useState([]);
   const [isToast, setIsToast] = useState(false);
   const [cart, setCart] = useState([]);
