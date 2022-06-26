@@ -1,6 +1,6 @@
 export default function SearchField() {
     return(
-        <div className="relative w-full lg:max-w-[480px] h-[38px]">
+        <div className="relative w-full lg:max-w-[400px] h-[38px]">
             <input className="bg-white w-full h-full rounded outline-none px-4" placeholder="Cari cabai merah"/>
             <div className="absolute h-full px-[12px] w-fit right-0 -top-1/2 translate-y-[50%] rounded-r items-center bg-gray-100 flex justify-center">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#8F8E8E" viewBox="0 0 16 16">
