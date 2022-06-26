@@ -64,7 +64,7 @@ export default function Keranjang() {
         {productCart != "" ? (
           <>
             <div className="flex justify-end">
-              <button className="text-red-500 text-sm" onClick={deleteAllCart}>
+              <button className="text-red-500 text-sm px-3 py-[2px] hover:bg-red-400 hover:text-white duration-[50ms] ease-in rounded" onClick={deleteAllCart}>
                 Hapus daftar
               </button>
             </div>
