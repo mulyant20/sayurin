@@ -33,7 +33,7 @@ export default function CartProduct({ nama, harga, diskon, satuan, jum, subtotal
       <div className="flex flex-col items-end justify-center">
         <p className="text-[14px] text-gray-400">Subtotal</p>
         <p className="text-gray-700 text-[14px] font-semibold">Rp. {diskon ? hargaDiskon : subtotal}</p>
-        <p>Jumlah, {jum}</p>
+        <p className="text-[14px] text-gray-400">Jumlah : <span className="text-gray-500">{jum}</span></p>
       </div>
     </div>
   );
