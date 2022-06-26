@@ -1,19 +1,23 @@
-import Head from "next/head";
 import { useEffect, useState } from "react";
+import Head from "next/head";
+import Link from "next/link";
+
 import CardProduct from "../components/CardProduct";
+import Category from "../components/Category";
 import Navbar from "../components/Navbar";
 import Toast from "../components/Toast";
+
 import { useProductContext } from "../context/ProductContextProvider";
 
 export default function Home() {
   const [cart, setCart] = useState([]);
   const [productLocal, setProductLocal] = useState([]);
-  const [isToast, setIsToast] = useState(false)
+  const [isToast, setIsToast] = useState(false);
 
   const { product } = useProductContext();
 
   const addToCart = (selectedItem) => {
-    setIsToast(true)
+    setIsToast(true);
     let idLocal = [...cart];
     let fromLocal = [...productLocal];
     let total = "";
@@ -81,6 +85,28 @@ export default function Home() {
       </Head>
       <Navbar />
       <div className="mt-6 max-w-[1100px] h-40 mx-auto px-6 lg:px-0 flex flex-wrap justify-between gap-2 lg:gap-4">
+        <div className="w-full flex justify-between lg:justify-center gap-4 mb-3">
+          <Link href="/buah">
+            <span>
+              <Category src="favor" text="Favorit" />
+            </span>
+          </Link>
+          <Link href="/buah">
+            <span>
+              <Category src="buah" text="Buah" />
+            </span>
+          </Link>
+          <Link href="/sayuran">
+            <span>
+              <Category src="sayur" text="Sayuran" />
+            </span>
+          </Link>
+          <Link href="/diskon">
+            <span>
+              <Category src="diskon" text="Diskon" />
+            </span>
+          </Link>
+        </div>
         {product.map((item) => {
           return (
             <CardProduct
@@ -95,7 +121,7 @@ export default function Home() {
           );
         })}
       </div>
-      {isToast && <Toast text='Produk berhasil ditambah'/>}
+      {isToast && <Toast text="Produk berhasil ditambah" />}
     </div>
   );
 }
