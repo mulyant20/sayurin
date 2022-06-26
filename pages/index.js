@@ -84,7 +84,7 @@ export default function Home() {
         <link rel="icon" href="/logo.svg" />
       </Head>
       <Navbar />
-      <div className="mt-6 max-w-[1100px] h-40 mx-auto px-6 lg:px-0 flex flex-wrap justify-between gap-2 lg:gap-4">
+      <div className="my-6 max-w-[1100px] h-fit mx-auto px-6 lg:px-0 flex flex-wrap justify-between gap-2 lg:gap-4">
         <div className="w-full flex justify-between lg:justify-center gap-4 mb-3">
           <Link href="/buah">
             <span>

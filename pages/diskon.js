@@ -83,7 +83,7 @@ export default function Diskon() {
         <link rel="icon" href="/logo.svg" />
       </Head>
       <Navbar />
-      <div className="mt-6 max-w-[1100px] h-40 mx-auto px-6 lg:px-0 flex flex-wrap justify-between lg:justify-start gap-2 lg:gap-4">
+      <div className="my-6 max-w-[1100px] h-fit mx-auto px-6 lg:px-0 flex flex-wrap justify-between lg:justify-start gap-2 lg:gap-4">
       <div className="w-full h-fit">
           <Link href='/'>
             <button className="w-fit h-[32px] flex justify-center items-center hover:bg-gray-200/50 rounded duration-[160ms] ease-in px-3 pl-1">
