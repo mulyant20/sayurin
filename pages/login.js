@@ -47,12 +47,12 @@ export default function Login() {
   };
 
   return (
-    <div className="h-screen w-screen">
-        <div className="w-96 h-32 absolute left-1/2 top-[116px] lg:top-12 -translate-x-1/2 flex items-center justify-center">
-          <div className="w-[72px] h-[80px] relative">
-            <Image src='/img/logo-big.png' layout='fill' priority='20'/>
-          </div>
+    <div>
+      <div className="max-w-96 h-32 absolute left-1/2 top-[116px] lg:top-12 -translate-x-1/2 flex items-center justify-center">
+        <div className="w-[72px] h-[80px] relative">
+          <Image src="/img/logo-big.png" layout="fill" priority="20" />
         </div>
+      </div>
       <div className="h-[560px] lg:h-fit bg-white w-screen md:w-fit px-8 py-10 flex justify-center items-start absolute bottom-0 lg:bottom-6 left-1/2 rounded-t-[24px] lg:rounded-xl -translate-x-1/2">
         <div className="w-96 h-fitG">
           <h1 className="mb-6 text-2xl text-gray-800 mb-8">Masuk</h1>
@@ -64,7 +64,7 @@ export default function Login() {
                 value={dataLogin.mail}
                 onChange={handleChange}
                 name="mail"
-                className="border border-gray-200 rounded-md px-4 py-3 outline-none bg-[#F5F5F5] mb-3"
+                className="border border-gray-200 rounded-md px-4 py-3 outline-none bg-[#F5F5F5] mb-3 w-full"
               />
               <input
                 type="password"
@@ -72,7 +72,7 @@ export default function Login() {
                 value={dataLogin.password}
                 onChange={handleChange}
                 name="password"
-                className="border border-gray-200 rounded-md px-4 py-3 outline-none bg-[#F5F5F5]"
+                className="border border-gray-200 rounded-md px-4 py-3 outline-none bg-[#F5F5F5] w-full"
               />
               <button
                 type="submit"
