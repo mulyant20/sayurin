@@ -77,6 +77,7 @@ export default function Keranjang() {
                   satuan={productCart[i][0].satuan}
                   diskon={productCart[i][0].diskon}
                   jum={productCart[i][1].jumlah}
+                  img={productCart[i][0].img}
                   subtotal={productCart[i][2].subtotal}
                 />
               );

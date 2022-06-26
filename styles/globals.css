@@ -72,25 +72,12 @@ body {
   }
 }
 
-.toast {
-  animation-name: showToast;
-  animation-duration: 150ms;
-  animation-timing-function: ease-out;
-}
 
-@media (max-width: 800px) {
   .toast {
-    animation: showToastMobile 150ms ease-out;
+    animation: showToast 150ms ease-out;
   }
-}
 
 @keyframes showToast {
-  from {
-    transform: translate(0%,100%);
-  }
-}
-
-@keyframes showToastMobile {
   from {
     transform: translate(0%,-100%);
   }

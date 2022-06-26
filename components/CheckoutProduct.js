@@ -34,7 +34,7 @@ export default function CheckoutProduct({ nama, harga, diskon, satuan, jumlah, s
         <p className="text-[14px] text-gray-400">
           x<span className="text-gray-700 text-[16px]">{jumlah}</span>
         </p>
-        <p className="text-gray-700 text-[14px] font-semibold">Rp. 40000</p>
+        <p className="text-gray-700 text-[14px] font-semibold">Rp. {diskon? hargaDiskon  : harga}</p>
       </div>
     </div>
   );

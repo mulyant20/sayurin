@@ -86,7 +86,7 @@ export default function Home() {
       <Navbar />
       <div className="my-6 max-w-[1100px] h-fit mx-auto px-6 lg:px-0 flex flex-wrap justify-between gap-2 lg:gap-4">
         <div className="w-full flex justify-between lg:justify-center gap-4 mb-3">
-          <Link href="/buah">
+          <Link href="/favorit">
             <span>
               <Category src="favor" text="Favorit" />
             </span>
@@ -117,6 +117,7 @@ export default function Home() {
               jumbeli={item.jumBeli}
               diskon={item.diskon}
               img={item.img}
+              favor={item.favor}
               click={() => addToCart(item.id)}
             />
           );

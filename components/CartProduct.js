@@ -1,14 +1,14 @@
 import Image from "next/image";
 
-export default function CartProduct({ nama, harga, diskon, satuan, jum, subtotal }) {
+export default function CartProduct({ nama, harga, diskon, satuan, jum, subtotal, img }) {
   let hargaDiskon = subtotal - (harga * diskon) / 100;
 
   return (
     <div className="flex justify-between">
       <div className="flex gap-[10px] h-[75px]">
-        <div className="w-[80px] h-[80px] rounded border border-gray-400 overflow-hidden relative">
+        <div className="w-[80px] h-[80px] rounded bg-gray-200 border border-gray-300 overflow-hidden relative">
             <Image
-              src="/img/productPlaceholder.png"
+              src={`/img/${img}.png`}
               layout="fill"
               priority="20"
             />

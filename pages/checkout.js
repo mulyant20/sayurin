@@ -62,8 +62,9 @@ export default function Checkout() {
               harga={productCart[i][0].harga}
               satuan={productCart[i][0].satuan}
               diskon={productCart[i][0].diskon}
-              jumlah='10'
-              subtotal='30000'
+              img={productCart[i][0].img}
+              jumlah={productCart[i][1].jumlah}
+              subtotal={productCart[i][2].subtotal}
             />
           );
         })}
