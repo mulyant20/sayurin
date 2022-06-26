@@ -77,6 +77,7 @@ export default function Keranjang() {
                   satuan={productCart[i][0].satuan}
                   diskon={productCart[i][0].diskon}
                   jum={productCart[i][1].jumlah}
+                  subtotal={productCart[i][2].subtotal}
                 />
               );
             })}
