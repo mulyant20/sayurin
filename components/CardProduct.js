@@ -7,13 +7,16 @@ export default function CardProduct({
   jumbeli,
   click,
   diskon,
+  img,
 }) {
   let hargaDiskon = harga - (harga * diskon) / 100;
 
   return (
     <div className="card-product min-h-[200px] bg-white/80 hover:bg-white hover:shadow-sm border border-transparent rounded-[8px] relative p-2 duration-[150ms] ease-in flex flex-col justify-between">
-      <div className="w-full h-24 rounded-[5px] border border-gray-200 overflow-hidden relative">
-        <Image src="/img/productPlaceholder.png" layout="fill" priority="20" />
+      <div className="w-full h-24 rounded-[5px] border border-gray-200 flex items-center justify-center bg-[#F6F6F6]">
+        <div className="w-1/2 h-full relative">
+          <Image src={`/img/${img}.png`} layout="fill" priority="20" />
+        </div>
       </div>
       <p className="mt-2 text-md text-gray-400">{nama}</p>
       <div className="mt-2 block lg:flex items-center">
