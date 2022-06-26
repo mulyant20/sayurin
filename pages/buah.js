@@ -112,6 +112,7 @@ export default function Buah() {
                 satuan={item.satuan}
                 jumbeli={item.jumBeli}
                 diskon={item.diskon}
+                img={item.img}
                 click={() => addToCart(item.id)}
               />
             );

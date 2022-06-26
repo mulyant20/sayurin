@@ -116,6 +116,7 @@ export default function Home() {
               satuan={item.satuan}
               jumbeli={item.jumBeli}
               diskon={item.diskon}
+              img={item.img}
               click={() => addToCart(item.id)}
             />
           );

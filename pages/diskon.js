@@ -84,8 +84,8 @@ export default function Diskon() {
       </Head>
       <Navbar />
       <div className="my-6 max-w-[1100px] h-fit mx-auto px-6 lg:px-0 flex flex-wrap justify-between lg:justify-start gap-2 lg:gap-4">
-      <div className="w-full h-fit">
-          <Link href='/'>
+        <div className="w-full h-fit">
+          <Link href="/">
             <button className="w-fit h-[32px] flex justify-center items-center hover:bg-gray-200/50 rounded duration-[160ms] ease-in px-3 pl-1">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -114,6 +114,7 @@ export default function Diskon() {
                 satuan={item.satuan}
                 jumbeli={item.jumBeli}
                 diskon={item.diskon}
+                img={item.img}
                 click={() => addToCart(item.id)}
               />
             );
