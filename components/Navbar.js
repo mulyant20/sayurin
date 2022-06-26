@@ -61,7 +61,7 @@ export default function Navbar() {
 
       <SearchField />
 
-      <div className="w-fit flex justify-end gap-2">
+      <div className="w-fit flex justify-end gap-2 ml-0 lg:-ml-14">
         <div className="w-8 h-8 rounded-full bg-white/40 relative">
           <Link href={"/keranjang"}>
             <div className="w-full h-full flex items-center justify-center cursor-pointer">
@@ -92,7 +92,7 @@ export default function Navbar() {
         ) : (
           <>
             <Link href={"/login"}>
-              <button className="px-2 py-1 rounded flex justify-center items-center bg-white/30 text-white text-sm hidden md:block">
+              <button className="px-2 py-1 rounded flex justify-center items-center bg-white/30 text-white text-sm block">
                 Login
               </button>
             </Link>
